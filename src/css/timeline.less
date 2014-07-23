@@ -1,0 +1,207 @@
+#app {
+
+  .timeline {
+    width: ~"calc(40% - 20px)";
+    height: 580px;
+    overflow-y: auto;
+    float: right;
+    @scroll-shadow: #BBB;
+    background: linear-gradient(@scroll-shadow, white 3%, white 97%, @scroll-shadow);
+    position: relative;
+
+    @media @mobile {
+      width: 100%;
+      margin: 0;
+      float: none;
+      max-height: 500px;
+    }
+  }
+
+  .timeline-header {
+    float: right;
+    margin-left: 20px;
+    width: ~"calc(40% - 20px)";
+    text-transform: uppercase;
+
+    @media @mobile {
+      width: 100%;
+      float: none;
+      margin: 0;
+    }
+  }
+
+  .timeline-list {
+    padding: 0;
+    margin: 0;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+
+    li {
+      list-style-type: none;
+      //border-top: 1px solid #DDD;
+      transition: background .2s linear;
+
+      &:nth-child(2n) {
+        background: rgba(226, 230, 216, .5);
+      }
+
+      &[has-aerial] {
+        // border-top: 2px solid #333;
+      }
+
+      &.active-year {
+        .year.channel label {
+          background: black;
+          color: white;
+          font-weight: bold;
+        }
+      }
+
+      &.landslide {
+
+        background: #444;
+        color: white;
+        border-bottom: #444 solid 1px;
+
+        .tagline {
+          padding: 4px;
+          text-align: center;
+          //cursor: pointer;
+
+          &::after {
+            content: "more";
+            padding: 0 4px;
+            color: #444;
+            background: white;
+            margin-left: 10px;
+            transition: background .2s, color .2s;
+            border-radius: 4px;
+            display: none;
+          }
+        }
+
+        &.expanded .tagline::after {
+          content: "less";
+          color: #444;
+          background: #888;
+        }
+
+        .content {
+          //display: none;
+          padding: 4px 12px 8px;
+          background: white;
+          color: black;
+          // border-radius: 4px;
+        }
+      }
+    }
+  }
+
+  .chatter {
+    padding: 16px;
+    border-top: none !important;
+
+    &.opening {
+      font-size: 14px;
+    }
+
+    &.closing {
+      min-height: 350px;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+    }
+  }
+
+  .channel {
+    float: left;
+    padding: 4px 0;
+    @channel-width: 22%;
+    font-size: 12px;
+    text-align: center;
+
+    @media @mobile {
+      font-size: 15px;
+    }
+
+    &.th {
+      white-space: normal;
+      //font-weight: bold;
+      border-left: 1px solid #DDD;
+      height: 40px;
+      &.year {
+        padding: 4px 0;
+      }
+
+      @media @mobile {
+        font-size: 10px;
+        font-weight: normal;
+      }
+    }
+
+    &.year {
+      width: 100 - @channel-width * 4;
+      padding: 0;
+
+      label {
+        display: block;
+        padding: 4px 0;
+      }
+
+      .camera {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+      }
+    }
+
+    &.home {
+      width: @channel-width;
+    }
+
+    &.logging {
+      width: @channel-width;
+    }
+
+    &.flag {
+      width: @channel-width;
+    }
+
+    &.fix {
+      width: @channel-width;
+    }
+
+  }
+
+  .dot {
+    //display: inline-block;
+    display: block;
+    margin: 4px auto;
+    //margin-right: 4px;
+    height: 32px;
+    width: 32px;
+
+    &.parcel {
+      //background: orange;
+    }
+
+    &.activity {
+      //background: green;
+    }
+
+    &.event {
+      //background: blue;
+    }
+
+    &.warning {
+      //background: darkred;
+    }
+
+    &.fix {
+      //background: black;
+    }
+
+  }
+}

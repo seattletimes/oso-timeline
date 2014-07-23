@@ -1,0 +1,12 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "apps-stage.seattletimesdata.com",
+      "path": "mudslide-timeline"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "2014/building-toward-disaster"
+    }
+  }
+}

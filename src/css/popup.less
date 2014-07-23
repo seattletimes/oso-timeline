@@ -1,0 +1,83 @@
+@import "variables";
+
+.popup {
+  position: absolute;
+  display: none;
+  width: 95%;
+  left: 2.5%;
+  background: white;
+  font-size: 13px;
+  border: 1px solid #DDD;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .2);
+
+  .contents {
+    padding: 8px;
+    background: white;
+    overflow: auto;
+  }
+
+  h2 {
+    padding: 0 0 8px;
+    margin: 0 0 8px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .close {
+    display: none;
+    float: right;
+    //font-weight: bold;
+    color: #AAA;
+    background: white;
+    //border: 1px solid #AAA;
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 8px;
+
+    @media @mobile {
+      font-size: 30px;
+    }
+  }
+
+  @pointWidth: 10px;
+  @pointHeight: 10px;
+  @border-color: white;
+
+  .point() {
+    position: absolute;
+    top: -@pointHeight;
+    height: 0px;
+    width: 0px;
+    border-color: transparent @border-color transparent @border-color;
+    z-index: 99;
+    content: "";
+    border-style: solid;
+  }
+
+  .tip {
+    position: absolute;
+    height: 0;
+    width: 0;
+    display: block;
+    &::before {
+      .point();
+      border-width: @pointHeight @pointWidth 0 0;
+    }
+
+    &::after {
+      .point();
+      left: @pointWidth;
+      border-width: @pointHeight 0 0 @pointWidth;
+    }
+  }
+}
+
+.home-photo {
+  max-width: 140px;
+  margin-left: 4px;
+  float: right;
+}

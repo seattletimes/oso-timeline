@@ -1,0 +1,14 @@
+@mobile: ~"(max-width: 700px)";
+@tablet: ~"(min-width: 480px) and (max-width: 700px) and (orientation: portrait)";
+
+.transform(@args) {
+  -webkit-transform: perspective(1000px) @args;
+  -moz-transform: perspective(1000px) @args;
+  transform: perspective(1000px) @args;
+}
+
+//standard colors:
+@text: #303030;
+@link: #09334B;
+@alert: #BC5C23;
+@gray: #333333;

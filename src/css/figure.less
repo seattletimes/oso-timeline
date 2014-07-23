@@ -1,0 +1,179 @@
+@import "variables";
+
+figure {
+  @border-color: #AAA;
+  width: 60%;
+  float: left;
+  margin: 0;
+  padding: 0px;
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+  position: relative;
+  // border-style: solid;
+  // border-color: @border-color;
+  // border-width: 0 1px;
+
+  @media @mobile {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+
+  .landscape {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    transition: opacity .3s linear;
+
+    &:first-child {
+      position: relative;
+      opacity: 1;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+  }
+
+  //big year callout
+  .photo-year {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, .4);
+    padding: 0 8px;
+    color: white;
+    font-size: 32px;
+
+    @media @mobile {
+      font-size: 24px;
+    }
+
+    @media @tablet {
+      font-size: 48px;
+    }
+  }
+
+  @pointWidth: 30px;
+  @pointHeight: 10px;
+  @pointTop: 300px;
+
+  .point() {
+    position: absolute;
+    right: -@pointWidth;
+    height: 0px;
+    width: 0px;
+    border-color: transparent @border-color transparent @border-color;
+    z-index: 99;
+    content: "";
+    border-style: solid;
+
+    @media @mobile {
+      bottom: -@pointHeight;
+    }
+  }
+
+  &.pointed::before {
+    .point();
+    top: @pointTop - @pointHeight;
+    border-width: @pointHeight 0 0 @pointWidth;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  &.pointed::after {
+    .point();
+    top: @pointTop;
+    border-width: 0 0 @pointHeight @pointWidth;
+
+    @media @mobile {
+      display: none;
+    }
+  }
+
+  figcaption {
+    text-align: left;
+    padding: 16px 8px;
+    position: relative;
+
+    @media @tablet {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .credit {
+      font-size: 10px;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      right: 8px;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .drawer-pull {
+      display: none;
+    }
+
+    @media @mobile {
+      width: 100%;
+      padding: 0;
+      position: absolute;
+      bottom: 0;
+      background: fade(black, 50%);
+      color: white;
+
+      & > div {
+        padding: 0 8px;
+      }
+
+      .drawer-pull {
+        display: block;
+        text-align: center;
+        height: 10%;
+        min-height: 33px;
+        font-size: 16px;
+        cursor: pointer;
+        border-bottom: 1px solid #BBB;
+        background: fade(black, 60%);
+        color: #BBB;
+
+        &::after {
+          content: " \25B2";
+          font-size: 20px;
+        }
+      }
+
+      .content {
+        height: 0;
+        overflow: auto;
+        font-size: 90%;
+        position: relative;
+      }
+
+      &.show-details {
+        height: 100%;
+
+        .drawer-pull {
+          &::after {
+            content: " \25BC";
+          }
+        }
+
+        .content {
+          height: 90%;
+          padding-top: 20px;
+        }
+      }
+
+    }
+  }
+
+}

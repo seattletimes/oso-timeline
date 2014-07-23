@@ -1,0 +1,30 @@
+#app {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  margin: auto;
+  line-height: normal;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 16px 0;
+
+  @media @mobile {
+    max-width: 100%;
+    min-height: 500px;
+    max-height: 100%;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.clearfix::after {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+  opacity: 0;
+  content: ".";
+  display: block;
+  clear: both;
+}

@@ -1,0 +1,77 @@
+  <li class="opening chatter">
+    <b>Scroll</b> for aerial photos and <b>touch or hover over icons</b> to explore events leading up to the 2014 slide.
+  </li>
+{{#events:year}}
+  {{#slide}}
+  <li class="clearfix landslide">
+    <div class="tagline">
+      Landslide: {{dateText}}
+    </div>
+    <div class="content">
+      {{& description}}
+    </div>
+  </li>
+  {{/slide}}
+  <li data-year="{{year}}" class="clearfix" has-aerial="{{!!aerial}}">
+    <div class="year channel">
+      <label>{{year}}</label>
+      {{#aerial}}<img src="assets/icons/ososlide-camera-c.png" class="camera">{{/aerial}}
+    </div>
+    <div class="home channel">
+      {{#homes}}
+      <span class="parcel dot" on-click="dig" on-mouseover="dig">
+        <img src="assets/icons/ososlide-house-c.png">
+      </span>
+      {{/homes}}
+      {{#neighborhood}}
+      <span class="event dot" on-click="dig" on-mouseover="dig">
+        <img src="assets/icons/ososlide-housedocument-c.png">
+      </span>
+      {{/neighborhood}}
+    </div>
+    <div class="flag channel">
+      {{#flag}}
+      <span class="warning dot" on-click="dig" on-mouseover="dig">
+        <img src="assets/icons/ososlide-flag-c.png">
+      </span>
+      {{/flag}}
+    </div>
+    <div class="logging channel">
+      {{#logging}}
+      <span class="activity dot" on-click="dig" on-mouseover="dig">
+        {{#isDocument}}<img src="assets/icons/ososlide-treedocument-c.png">{{/isDocument}}
+        {{^isDocument}}<img src="assets/icons/ososlide-tree-c.png">{{/isDocument}}
+      </span>
+      {{/logging}}
+    </div>
+    <div class="fix channel">
+      {{#fix}}
+      <span class="fix dot" on-click="dig" on-mouseover="dig">
+        {{#isDocument}}<img src="assets/icons/ososlide-fixdocument-c.png">{{/isDocument}}
+        {{^isDocument}}<img src="assets/icons/ososlide-fix-c.png">{{/isDocument}}
+      </span>
+      {{/fix}}
+    </div>
+  </li>
+  {{#lateSlide}}
+  <li class="clearfix landslide">
+    <div class="tagline">
+      Landslide: {{dateText}}
+    </div>
+    <div class="content">
+      {{& description}}
+    </div>
+  </li>
+  {{/lateSlide}}
+{{/events}}
+
+<li class="closing chatter">
+  <p>
+    On March 23, the day after the slide, a grants manager at a state office that helped fund the log barrier emailed colleagues: “I still can’t believe two things: first, people keep going back to build along the river; and two, Snohomish County lets them! Sheesh.”
+
+  <p>
+    On March 24, John Pennington, head of Snohomish County’s Department of Emergency Management, told reporters the slide was unforeseeable: “This came out of nowhere. No warning.”
+
+  <p> Forty-three people were killed in the landslide. To learn more about them, click the image below: <a href="http://seattletimes.com/flatpages/local/victimsoftheosomudslide.html"><img src="assets/victims_montage.jpg"></a>
+
+</li>

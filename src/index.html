@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Oso landslide: building toward disaster | The Seattle Times</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <%= t.include("_adhead.html") %>
+  </head>
+  <body>
+
+    <nav class="top-bar">
+      <img class="logo" src="http://seattletimes.com/art/ui/seattletimeslogo_home.svg">
+      <a class="more" href="http://seattletimes.com/flatpages/local/oso-mudslide-coverage.html">
+        More landslide coverage &rsaquo;
+      </a>
+    </nav>
+    <section class="intro">
+      <h3 class="subhead">Oso's Slide Hill</h3>
+      <h1>Building toward disaster</h1>
+      <div class="text">
+        <p>
+          The decades preceding the deadly landslide near Oso reflect a shifting landscape with one human constant: Even as warnings mounted, people kept moving in. This interactive graphic tells that story, starting in 1887. <span class="read-more">Thirteen aerial photographs from the 1930s on capture the geographical changes; the hill is scarred by a succession of major slides while the river at its base gets pushed away, only to fight its way back. This graphic lets you go back in time and track the warnings from scientists; the failed attempts to stabilize the hill; the logging on or near the unstable slope; and the 37 homes that were built below the hill only to be destroyed.</span>
+      </div>
+    </section>
+
+    <section id="app">
+
+      <figure>
+        <img class="landscape" src="assets/aerial/intro.jpg">
+<%
+var images = grunt.file.expand(["src/assets/aerial/*.jpg", "!**/intro.jpg"]);
+images.forEach(function(url, i) {
+  var year = url.split("/").pop().replace(".jpg", "");
+  url = url.replace(/^\/?src\/?/, "");
+%>
+        <img class="landscape" data-year=<%= year %> src="<%= url %>">
+<% }); %>
+        <div class="photo-year"></div>
+        <figcaption>
+          <div class="drawer-pull">Details</div>
+          <div class="content">
+            <div class="credit"></div>
+            <div class="caption">
+              <b>Scroll the timeline</b> to see aerial photos and changes in the landscape over time.
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="timeline-header">
+        <div class="year channel th">
+          Year
+        </div>
+        <div class="home channel th">
+          Homes
+        </div>
+        <div class="flag channel th">
+          Red Flags
+        </div>
+        <div class="logging channel th">
+          Logging
+        </div>
+        <div class="fix channel th">
+          Attempted Fixes
+        </div>
+      </div>
+      <div class="timeline">
+        <ol class="timeline-list"></ol>
+        <div class="popup">
+          <span class="tip"></span>
+          <a class="close">&times;</a>
+          <div class="contents"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <a class="sharing"></a>
+
+    <section class="glossary collapsible">
+      <h2 class="trigger">Glossary</h2>
+      <div class="content">
+        <ul>
+        <% csv.glossary.forEach(function(item) { %>
+          <li> <a class="term"><%= item.term %></a>
+            <span class="definition"> - <%= item.definition %></span>
+        <% }); %>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sources collapsible">
+      <h2 class="trigger">Sources</h2>
+      <div class="content">
+        <%= t.include("_sources.html") %>
+      </div>
+    </section>
+
+    <section class="credits">
+      <h2 class="trigger">Credits</h2>
+      <div class="content">
+        <b>Reporters:</b> Ken Armstrong, Justin Mayo, Mike Baker and Jim Brunner<br>
+        <b>Interactive:</b> Thomas Wilburn<br>
+        <b>Graphics:</b> Mark Nowlin<br>
+        <b>Editor:</b> Beth Kaiman
+      </div>
+    </section>
+
+    <%= t.include("_inlineTemplates.html") %>
+
+    <script src="app.js"></script>
+    <%= t.include("_adfoot.html") %>
+  </body>
+</html>
